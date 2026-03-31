@@ -17,7 +17,7 @@ type ReflectionPath = 'control' | 'grey' | 'acceptance' | 'savor_record' | 'savo
 // --- Components ---
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="min-h-screen text-slate-200 font-sans selection:bg-blue-500/30 selection:text-white overflow-hidden">
+  <div className="min-h-screen text-slate-200 font-sans selection:bg-blue-500/30 selection:text-white overflow-x-hidden w-full">
     <div className="starfield" />
     {/* Subtle orbital lines */}
     <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20 orbital-ring">
@@ -25,7 +25,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] aspect-square border border-white/5 rounded-full" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] aspect-square border border-white/10 rounded-full" />
     </div>
-    <div className="max-w-md mx-auto min-h-screen flex flex-col p-5 sm:p-8 relative z-10">
+    <div className="max-w-md w-full mx-auto min-h-screen flex flex-col p-4 sm:p-8 relative z-10">
       {children}
     </div>
   </div>
@@ -39,12 +39,12 @@ const Header: React.FC<{
   locale: Locale;
   onToggleLocale: (l: Locale) => void;
 }> = ({ onBack, showBack, theme, onToggleTheme, locale, onToggleLocale }) => (
-  <header className="flex items-center justify-between mb-8 sm:mb-12 h-10">
-    <div className="flex items-center gap-2">
+  <header className="flex items-center justify-between mb-6 sm:mb-12 h-10 shrink-0 z-20 gap-2 w-full">
+    <div className="flex items-center gap-2 shrink-0">
       {showBack && (
         <button
           onClick={onBack}
-          className="p-2 -ml-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2 text-sm font-medium text-slate-400"
+          className="p-2 -ml-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1 sm:gap-2 text-sm font-medium text-slate-400"
           aria-label={t(locale, 'common.back')}
         >
           <ChevronLeft size={18} />
@@ -52,19 +52,19 @@ const Header: React.FC<{
         </button>
       )}
       {!showBack && (
-        <div className="flex items-center gap-3 text-blue-400">
-          <div className="relative">
+        <div className="flex items-center gap-2 sm:gap-3 text-blue-400 shrink-0">
+          <div className="relative hidden sm:block">
             <Compass size={20} className="animate-pulse" />
             <div className="absolute inset-0 bg-blue-400/20 blur-lg rounded-full" />
           </div>
-          <span className="font-bold tracking-[0.2em] uppercase text-xs">{t(locale, 'brand')}</span>
+          <span className="font-bold tracking-[0.1em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm truncate">{t(locale, 'brand')}</span>
         </div>
       )}
     </div>
 
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1 sm:gap-2">
       {/* Language Switcher */}
-      <div className="flex items-center bg-white/5 rounded-full p-1 mr-1">
+      <div className="flex items-center bg-white/5 rounded-full p-1 mr-1 sm:mr-2">
         {(['zh-TW', 'ja', 'en'] as Locale[]).map((l) => (
           <button
             key={l}
@@ -103,12 +103,12 @@ const EmotionButton: React.FC<{
     whileHover={{ x: 4 }}
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
-    className="w-full p-5 mb-3 glass-button rounded-xl text-left group relative overflow-hidden"
+    className="w-full p-4 sm:p-5 mb-2 sm:mb-3 glass-button rounded-xl text-left group relative overflow-hidden"
   >
     <div className="flex items-center justify-between relative z-10">
-      <div className="flex items-center gap-4">
-        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/40 group-hover:bg-blue-400 transition-colors shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-        <span className="text-lg font-light tracking-wide text-slate-200 group-hover:text-white transition-colors">{label}</span>
+      <div className="flex items-center gap-3 sm:gap-4">
+        <div className="w-1.5 h-1.5 shrink-0 rounded-full bg-blue-500/40 group-hover:bg-blue-400 transition-colors shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+        <span className="text-base sm:text-lg font-light tracking-wide text-slate-200 group-hover:text-white transition-colors break-words">{label}</span>
       </div>
       <MoveRight size={18} className="text-slate-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
     </div>
@@ -302,18 +302,18 @@ export default function App() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-blue-500/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
               </div>
               
-              <h1 className="text-3xl sm:text-4xl font-extralight mb-4 tracking-[0.3em] text-white uppercase">
+              <h1 className="text-2xl sm:text-4xl font-extralight mb-4 tracking-[0.2em] sm:tracking-[0.3em] text-white uppercase px-2 break-words">
                 {t(locale, 'brand')}
               </h1>
-              <p className="text-sm text-slate-400 mb-16 leading-relaxed tracking-widest uppercase font-mono">
+              <p className="text-xs sm:text-sm text-slate-400 mb-12 sm:mb-16 leading-relaxed tracking-[0.1em] sm:tracking-widest uppercase font-mono px-4">
                 {t(locale, 'brandSub')}<br />
                 <span className="opacity-50">{t(locale, 'brandTag')}</span>
               </p>
               
-              <div className="space-y-6 max-w-[280px] mx-auto w-full">
+              <div className="space-y-4 sm:space-y-6 max-w-[320px] mx-auto w-full px-4 sm:px-0">
                 <button
                   onClick={handleStart}
-                  className="w-full py-5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 rounded-2xl font-medium tracking-[0.2em] uppercase text-sm transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] active:scale-[0.98]"
+                  className="w-full py-4 sm:py-5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 rounded-2xl font-medium tracking-[0.2em] uppercase text-xs sm:text-sm transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] active:scale-[0.98]"
                 >
                   {t(locale, 'home.start')}
                 </button>
@@ -471,17 +471,17 @@ export default function App() {
 
                     <p className="text-[10px] text-slate-500 mb-2 uppercase tracking-[0.2em] font-mono">{t(locale, 'result.identified')}</p>
                     <h3 
-                      className="text-3xl sm:text-4xl font-bold tracking-wider text-white"
+                      className="text-2xl sm:text-4xl font-bold tracking-wider text-white break-words w-full"
                     >
                       {resultSentence.includes(' (') ? (
                         <div className="flex flex-col items-center">
-                          <span>{resultSentence.split(' (')[0]}</span>
-                          <span className="text-lg font-light text-slate-500 mt-3 tracking-widest uppercase font-mono">
+                          <span className="text-center">{resultSentence.split(' (')[0]}</span>
+                          <span className="text-base sm:text-lg font-light text-slate-500 mt-2 sm:mt-3 tracking-widest uppercase font-mono text-center">
                             ({resultSentence.split(' (')[1]}
                           </span>
                         </div>
                       ) : (
-                        resultSentence
+                        <span className="text-center block">{resultSentence}</span>
                       )}
                     </h3>
                     
