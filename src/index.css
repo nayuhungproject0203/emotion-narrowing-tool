@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --bg: #020617;
+  --text: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.08);
+  --star-opacity: 0.15;
+  --star-color: #fff;
+  --accent: #3b82f6;
+  --grad-start: #0f172a;
+  --grad-end: #020617;
+}
+
+.light {
+  --bg: #fdfdfc; /* Soft off-white / cool paper tone */
+  --text: #1e293b; /* Dark navy-gray */
+  --glass: rgba(255, 255, 255, 0.7); /* More opaque white for cards */
+  --glass-hover: rgba(255, 255, 255, 0.9);
+  --border: rgba(15, 23, 42, 0.08);
+  --star-opacity: 0.05;
+  --star-color: #94a3b8;
+  --accent: #2563eb;
+  --grad-start: #f8fafc;
+  --grad-end: #f1f5f9;
+}
+
+.light .text-white {
+  color: #0f172a; /* Darker navy-gray */
+}
+
+.light .text-slate-200 {
+  color: #1e293b;
+}
+
+.light .text-slate-300 {
+  color: #334155;
+}
+
+.light .text-slate-400 {
+  color: #475569; /* Clearer secondary text */
+}
+
+.light .text-slate-500 {
+  color: #64748b;
+}
+
+.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.light .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.05);
+}
+
+.light .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+.light .border-blue-500\/20 {
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.light .border-blue-500\/30 {
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+/* Primary Button Overrides for Light Mode */
+.light .bg-blue-600\/20 {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
+  border-color: rgba(37, 99, 235, 0.4);
+  font-weight: 600;
+}
+
+.light .bg-blue-600\/20:hover {
+  background-color: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.6);
+}
+
+/* Orbital Rings Opacity */
+.light .orbital-ring {
+  opacity: 0.05;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Starfield Background Effect */
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, var(--grad-start) 0%, var(--grad-end) 100%);
+  transition: background 0.5s ease;
+}
+
+.starfield::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 160px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 80px 120px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 110px 210px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 150px 150px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 190px 40px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 210px 280px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 240px 110px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 280px 190px, var(--star-color), rgba(0,0,0,0));
+  background-size: 300px 300px;
+  opacity: var(--star-opacity);
+  animation: drift 120s linear infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-300px); }
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: background 0.5s ease, border 0.5s ease;
+}
+
+.glass-button {
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: var(--glass-hover);
+  border-color: var(--accent);
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
