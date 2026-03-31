@@ -80,9 +80,11 @@
   font-weight: 600;
 }
 
-.light .bg-blue-600\/20:hover {
-  background-color: rgba(37, 99, 235, 0.15);
-  border-color: rgba(37, 99, 235, 0.6);
+@media (hover: hover) {
+  .light .bg-blue-600\/20:hover {
+    background-color: rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.6);
+  }
 }
 
 /* Orbital Rings Opacity */
@@ -155,9 +157,11 @@ body {
   transition: all 0.3s ease;
 }
 
-.glass-button:hover {
-  background: var(--glass-hover);
-  border-color: var(--accent);
+@media (hover: hover) {
+  .glass-button:hover {
+    background: var(--glass-hover);
+    border-color: var(--accent);
+  }
 }
 
 /* Custom scrollbar for a cleaner look */
