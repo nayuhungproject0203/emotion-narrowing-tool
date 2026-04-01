@@ -2,7 +2,7 @@ export const zhTW = {
   brand: "情緒宇航員",
   brandSub: "Inner Space Navigation System",
   brandTag: "定位你的內在座標",
-  
+
   common: {
     back: "返回",
     restart: "重新探索",
@@ -17,8 +17,8 @@ export const zhTW = {
 
   home: {
     start: "開始旅程",
-    specs: "系統規格",
-    sector: "情緒意識扇區",
+    specs: "設計理論",
+    sector: "情緒覺察區",
   },
 
   steps: {
@@ -50,13 +50,13 @@ export const zhTW = {
     problemOptions: [
       "有些事可能需要被解決",
       "有些事可能需要被放下",
-      "有些事可能只需要被聽見"
+      "有些事可能只需要被看見"
     ],
     controlTitle: "這件事對你來說，",
     controlSub: "目前的掌控感如何？",
     controlOptions: {
       control: "是我現在可以處理的",
-      grey: "是現在不急著處理的",
+      grey: "是現在不用急著處理的",
       acceptance: "是目前我無法控制的",
     }
   },
@@ -71,7 +71,7 @@ export const zhTW = {
       directive: "列出三件能推動這件事向前的行動，然後著手完成其中最不需要動腦的那一件。"
     },
     grey: {
-      title: "現在不急著處理",
+      title: "現在不用急著處理",
       desc: "有些感覺雖然不舒服，但現在或許不是處理它的最好時機。這不代表你在逃避，而是選擇在思緒混亂時，不衝動行動。",
       query: "「如果這件事在 24 小時後才處理，世界會因此崩塌嗎？」",
       directive: "設定一個「情緒暫停時間」，這段時間內先去做一件小事。這能幫助你將注意力暫時從思緒抽離。"
@@ -95,16 +95,16 @@ export const zhTW = {
       directive: "思考一下，未來可以如何有意識地創造更多類似的時刻。"
     },
     savor_action: {
-      title: "把這份感受帶進下一步",
+      title: "把這份感受帶進下一個行動",
       desc: "不要讓這份能量停在這裡。試著將這份「{emotion}」轉化為行動的動力，讓它影響你接下來的決定。",
       query: "「帶著這份能量，我接下來想做的一件事是什麼？」",
       directive: "立刻去做那件你想做很久卻一直拖延的事，哪怕只是傳個訊息或喝杯咖啡。"
     },
-    copyLog: "心緒釐清結果：\n路徑：{path}\n建議：{suggestion}"
+    copyLog: "情緒釐清結果：\n路徑：{path}\n建議：{suggestion}"
   },
 
   about: {
-    title: "方法論與協定",
+    title: "設計理論",
     phase1Title: "階段 01：情緒辨識 / 命名",
     phase1Desc1: "本階段核心在於「情緒命名 (Affect Labeling)」。",
     phase1Desc2: "研究指出，將抽象的感受轉化為具體的詞彙，能有效降低大腦杏仁核的過度活化，並提升前額葉皮質的調節能力，從而達到情緒緩和的效果。",
